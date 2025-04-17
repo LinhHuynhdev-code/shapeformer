@@ -106,7 +106,7 @@ if __name__ == '__main__':
         # -------------------------------------------- Shapelet Discovery ----------------------------------------------
         shapelet_discovery = ShapeletDiscover(window_size=args.window_size, num_pip=args.num_pip,
                                               processes=args.processes, len_of_ts=len_ts, dim=dim)
-        sc_path = "/kaggle/working/shapeformer/store/" + problem + "_" + str(args.window_size) + ".pkl"
+        sc_path = "/kaggle/working/shapeformer/store/" + problem + "_" + str(args.window_size) + ".0.pkl"
         if args.pre_shapelet_discovery == 1:
             shapelet_discovery.load_shapelet_candidates(path=sc_path)
         else:

@@ -44,7 +44,7 @@ if __name__ == '__main__':
     print(list_dataset_name)
     for problem in list_dataset_name[config['dataset_pos']:config['dataset_pos'] + 1]:  # for loop on the all datasets in "data_dir" directory
         print("Problem: %s" % problem)
-        config['data_dir'] = config['output_dir'] +"/"+ problem
+        config['data_dir'] = config['data_path'] +"/"+ problem
         # ------------------------------------ Load Data ---------------------------------------------------------------
         logger.info("Loading Data ...")
         Data = Data_Loader(config)

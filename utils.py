@@ -86,7 +86,8 @@ def Data_Verifier(config):
     directories = [name for name in os.listdir(config['data_path']) if os.path.isdir(os.path.join(config['data_path'], name))]
 
     if directories:
-        print(f"The {config['data_path'].split('/')[-1]} data is already existed")
+        print(3)
+        print(f"The {config['data_path'].split('/')[-2]} data is already existed")
     else:
         if config['data_path'].split('/')[2] == 'uea-dataset':
             file_url = 'http://www.timeseriesclassification.com/Downloads/Archives/Multivariate2018_ts.zip'

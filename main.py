@@ -91,7 +91,7 @@ if __name__ == '__main__':
     list_dataset_name.sort()
     print(list_dataset_name)
     for problem in list_dataset_name[config['dataset_pos']:config['dataset_pos']+1]:  # for loop on the all datasets in "data_dir" directory
-        config['data_dir'] = config['output_dir'] +"/"+ problem
+        config['data_dir'] = config['data_path'] +"/"+ problem
         print(problem)
         # ------------------------------------ Load Data ---------------------------------------------------------------
         logger.info("Loading Data ...")

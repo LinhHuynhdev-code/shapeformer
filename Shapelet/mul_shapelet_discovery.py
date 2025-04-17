@@ -173,6 +173,7 @@ class ShapeletDiscover():
 
 
     def discovery(self, train_data, train_labels, flag=1):
+        self.window_size = int(self.window_size)
         time2 = time.time()
         self.train_data = train_data
         self.train_labels = train_labels

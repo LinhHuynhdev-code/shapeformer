@@ -94,9 +94,10 @@ def Data_Verifier(config):
             # Downloader(file_url, 'UEA')
             print(2)
 
-    if config['data_path'].split('/')[-1] == 'uea-dataset':
+    if config['data_path'].split('/')[-2] == 'uea-dataset':
         print(1)
         config['data_path'] = os.path.join(config['data_path'], 'Multivariate_ts')
+        print(config['data_path'])
 
 
 def Downloader(file_url, problem):

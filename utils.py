@@ -80,27 +80,22 @@ def Data_Loader(config):
 
 
 def Data_Verifier(config):
-    data_path = config['data_path']
 
-    if not os.path.exists(data_path):
-        os.makedirs(data_path)
-    
-    directories = [
-        name for name in os.listdir(data_path)
-        if os.path.isdir(os.path.join(data_path, name))
-    ]
-
-    current_folder_name = os.path.basename(data_path)
+    if not os.path.exists(config['data_path']):
+        os.makedirs(os.path.join(os.getcwd(), config['data_path']))
+    directories = [name for name in os.listdir(config['data_path']) if os.path.isdir(os.path.join(config['data_path'], name))]
 
     if directories:
-        print(f"The '{current_folder_name}' data is already existed.")
+        print(f"The {config['data_path'].split('/')[-1]} data is already existed")
     else:
-        if current_folder_name.lower() == 'uea-dataset':
+        if config['data_path'].split('/')[2] == 'uea-dataset':
             file_url = 'http://www.timeseriesclassification.com/Downloads/Archives/Multivariate2018_ts.zip'
-            Downloader(file_url, 'uea')
+            # Downloader(file_url, 'UEA')
+            print(2)
 
-    if current_folder_name.lower() == 'uea-dataset':
-        config['data_path'] = os.path.join(data_path, 'Multivariate_ts')
+    if config['data_path'].split('/')[-1] == 'uea-dataset':
+        print(1)
+        config['data_path'] = os.path.join(config['data_path'], 'Multivariate_ts')
 
 
 def Downloader(file_url, problem):

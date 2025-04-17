@@ -28,7 +28,7 @@ def Setup(args):
     if not os.path.isdir(output_dir):
         os.makedirs(output_dir)
 
-    output_dir = os.path.join(output_dir, config['data_path'], initial_timestamp.strftime("%Y-%m-%d_%H-%M"))
+    output_dir = os.path.join(output_dir, initial_timestamp.strftime("%Y-%m-%d_%H-%M"))
     config['output_dir'] = output_dir
     config['save_dir'] = os.path.join(output_dir, 'checkpoints')
     config['pred_dir'] = os.path.join(output_dir, 'predictions')
@@ -80,20 +80,27 @@ def Data_Loader(config):
 
 
 def Data_Verifier(config):
+    data_path = config['data_path']
 
-    if not os.path.exists(config['data_path']):
-        os.makedirs(os.path.join(os.getcwd(), config['data_path']))
-    directories = [name for name in os.listdir(config['data_path']) if os.path.isdir(os.path.join(config['data_path'], name))]
+    if not os.path.exists(data_path):
+        os.makedirs(data_path)
+    
+    directories = [
+        name for name in os.listdir(data_path)
+        if os.path.isdir(os.path.join(data_path, name))
+    ]
+
+    current_folder_name = os.path.basename(data_path)
 
     if directories:
-        print(f"The {config['data_path'].split('/')[-2]} data is already existed")
+        print(f"The '{current_folder_name}' data is already existed.")
     else:
-        if config['data_path'].split('/')[1] == 'UEA':
+        if current_folder_name.lower() == 'uea-dataset':
             file_url = 'http://www.timeseriesclassification.com/Downloads/Archives/Multivariate2018_ts.zip'
-            Downloader(file_url, 'UEA')
+            Downloader(file_url, 'uea')
 
-    if config['data_path'].split('/')[-2] == 'UEA':
-        config['data_path'] = os.path.join(config['data_path'], 'Multivariate_ts')
+    if current_folder_name.lower() == 'uea-dataset':
+        config['data_path'] = os.path.join(data_path, 'Multivariate_ts')
 
 
 def Downloader(file_url, problem):

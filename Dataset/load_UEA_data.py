@@ -80,7 +80,7 @@ def load(config):
         Data['test_data'] = X_test
         Data['test_label'] = y_test
 
-        np.save(config['data_dir'] + "/" + problem, Data, allow_pickle=True)
+        np.save(config['output_dir'] + "/" + problem, Data, allow_pickle=True)
 
     return Data
 
